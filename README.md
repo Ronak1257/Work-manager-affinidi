@@ -8,47 +8,100 @@ At the heart of our application is the integration with Affinidi, a leading prov
 
 ## Features
 
-1. Gender Based item showing
+### 1. Adding Daily Tasks:
+Seamlessly input and organize your daily tasks, ensuring efficient planning and execution of your schedule.
+```
+export async function addTask(task){
+    const result= await httpAxios.post("/api/task",task).then((response)=>response.data);
+    return result;
+}
 
-At the core of our platform lies the groundbreaking feature of gender-based clothing suggestions tailored to each user's preferences. Leveraging Affinidi's secure data retrieval capabilities, we intelligently gather user information, including gender, directly from their Affinidi Vault.
+route : "/api/task"
+export async function POST(request) {
+    const {title,content,email,status}=await request.json();
+    try{
+        const task=new Task({
+            title,
+            content,
+            email,
+            status,
+        });
+        await connectDb();
+        const createdTask=await task.save();
+        return NextResponse.json(createdTask,{
+            status:201,
+        });
+    }
+    catch(err){
+        console.log(err);
+        return getResponseMessage("failed to create task",404,false);
+    }
+}
+```
+### 2. User Task Management:
+Access and manage your personalized task list within the user section, providing a comprehensive view of your tasks and priorities.
 
-Male: For users who identify as male, our platform curates a selection of stylish and trendy clothing options specifically catered to men's fashion preferences.
+### 3. Database Storage and Accessibility:
+Store tasks securely in the database, allowing users to access and update their tasks from any location, ensuring flexibility and convenience.
 
-Female: Similarly, for users who identify as female, we showcase a diverse array of fashionable and chic clothing choices tailored to women's style preferences.
+### 4. Task Deletion Functionality:
+Easily remove completed or unnecessary tasks with the task deletion feature, keeping your task list concise and focused on current objectives.
 
-Not Selected: In cases where the user has not specified their gender, our platform intelligently combines male and female clothing options, providing a comprehensive selection to suit diverse tastes and preferences.
+```
+export async function deleteTask(taskId){
+    const result= await httpAxios.delete(`/api/task/${taskId}`).then((response)=>response.data);
+    return result;
+}
 
-This dynamic approach ensures that every user receives personalized clothing recommendations aligned with their unique style and preferences, enhancing the overall shopping experience.
-
-2. Showing Name and Profile Picture in Header Section
-
-Profile Picture Display: The header prominently showcases the user's profile picture, providing a visual representation of their identity and personalization. This feature adds a human touch to the browsing experience, fostering a sense of connection between the user and the platform.
-
-Name Recognition: Alongside the profile picture, the user's name is displayed in the header section. By acknowledging the user by name, the platform creates a personalized experience, reinforcing the user's identity and making them feel valued and recognized.
-
-Enhanced User Engagement: By prominently featuring the user's profile picture and name in the header section, the platform encourages active engagement and interaction. Users feel acknowledged and connected to the platform, driving increased participation and loyalty over time
-
+//below emailId is our taskId variable
+//route: "/api/task/[emailId]
+export async function DELETE(request,{params}){
+    const {emailId}=params;
+    try{
+        await connectDb();
+        await Task.deleteOne({
+            _id:emailId,
+        })
+        return getResponseMessage("task deleted",200,true);
+    }
+    catch(err){
+        console.log(err);
+        return getResponseMessage("failed to delete task",500,false);
+    }
+}
+```
+### 5. User Profile Viewing:
+Click on your profile picture to access and view your user profile, providing insights into your account details and settings.
 
 ## User Experience
 
-Enhancing UI with Tailwind CSS and React:
+### Intuitive User Interface:
+The application features a user-friendly interface with easy-to-understand navigation and design elements, ensuring users can quickly and effortlessly navigate through the application.
 
-Integration: Tailwind CSS can be seamlessly integrated into React projects using either traditional CSS imports or tools like craco or @craco/craco for Create React App projects. Once integrated, developers can apply Tailwind CSS utility classes directly to JSX elements within React components.
+### Simple Task Management:
+Users can easily add, edit, and delete tasks through a straightforward interface, streamlining the task management process and allowing for efficient organization of daily activities.
 
-Component Styling: Tailwind CSS classes can be used to style individual React components, including layout, typography, spacing, colors, and more. By leveraging Tailwind CSS utility classes, developers can rapidly iterate on UI designs and prototypes without writing custom CSS.
+### Responsive Design:
+With a responsive design, the application seamlessly adapts to various screen sizes and devices, providing a consistent user experience across desktops, tablets, and mobile devices.
 
-Responsive Design: Tailwind CSS utilities enable developers to create responsive layouts and components that adapt to different screen sizes and devices. Media query breakpoints and responsive utilities make it easy to define styles for various viewport sizes, ensuring a consistent user experience across devices.
+### Real-Time Updates:
+Users benefit from real-time updates and synchronization, ensuring that their task lists are always up to date and accessible from anywhere, at any time, facilitating efficient collaboration and task tracking.
 
-State Management: React's state management capabilities, combined with Tailwind CSS styling, allow developers to create dynamic and interactive UIs. Components can respond to user interactions and update their state accordingly, triggering re-renders with updated styles and content.
-
-site link : 
+site link : https://ronak-affinidi-work-manager.vercel.app/
 
 Images
 
 Home Page:
+![home page](https://github.com/Ronak1257/Work-manager-affinidi/assets/130481625/20f92761-3c0b-4be6-ab17-f9e9cc0737c4)
 
-Cart Page:
+Landing Page:
+![landing page](https://github.com/Ronak1257/Work-manager-affinidi/assets/130481625/d9d8e99f-a110-4288-b1b0-ee533808a25b)
 
-Checkout Page:
+Add Task Page:
+![add-task](https://github.com/Ronak1257/Work-manager-affinidi/assets/130481625/4a99b808-5849-4bc6-9b1b-088eea42bba4)
 
-other Images:
+Show Task Page:
+![show-task](https://github.com/Ronak1257/Work-manager-affinidi/assets/130481625/8c50e937-e45c-4e9a-9808-1dff1c5400ee)
+
+User Profile Page:
+![user profile](https://github.com/Ronak1257/Work-manager-affinidi/assets/130481625/98794610-9889-47d2-9976-c105c2607f09)
