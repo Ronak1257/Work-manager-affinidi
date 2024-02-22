@@ -1,9 +1,7 @@
 
 ## Introduction
 
-Welcome to our cutting-edge web application built with React, Next.js, and powered by Affinidi for secure direct logins from the Affinidi Vault. Our platform offers a seamless and secure checkout process, leveraging the latest in authentication and authorization technologies.
-
-At the heart of our application is the integration with Affinidi, a leading provider of secure digital identity solutions. Through Affinidi, users can enjoy a frictionless login experience directly from their Affinidi Vault, ensuring their credentials and personal data remain private and protected.
+Our application leverages Affinidi for authentication, ensuring secure and seamless user login experiences. With MongoDB as the database storage solution, users can store and access their data reliably and efficiently. Powered by Next.js, our application delivers a high-performance and interactive user interface, offering a smooth and engaging user experience.
 
 
 ## Features
@@ -89,19 +87,19 @@ Users benefit from real-time updates and synchronization, ensuring that their ta
 
 site link : https://ronak-affinidi-work-manager.vercel.app/
 
-Images
+## Images
 
-Home Page:
+### Home Page:
 ![home page](https://github.com/Ronak1257/Work-manager-affinidi/assets/130481625/20f92761-3c0b-4be6-ab17-f9e9cc0737c4)
 
-Landing Page:
+### Landing Page:
 ![landing page](https://github.com/Ronak1257/Work-manager-affinidi/assets/130481625/d9d8e99f-a110-4288-b1b0-ee533808a25b)
 
-Add Task Page:
+### Add Task Page:
 ![add-task](https://github.com/Ronak1257/Work-manager-affinidi/assets/130481625/4a99b808-5849-4bc6-9b1b-088eea42bba4)
 
-Show Task Page:
+### Show Task Page:
 ![show-task](https://github.com/Ronak1257/Work-manager-affinidi/assets/130481625/8c50e937-e45c-4e9a-9808-1dff1c5400ee)
 
-User Profile Page:
+### User Profile Page:
 ![user profile](https://github.com/Ronak1257/Work-manager-affinidi/assets/130481625/98794610-9889-47d2-9976-c105c2607f09)
