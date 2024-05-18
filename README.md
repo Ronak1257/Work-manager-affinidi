@@ -85,7 +85,7 @@ With a responsive design, the application seamlessly adapts to various screen si
 ### Real-Time Updates:
 Users benefit from real-time updates and synchronization, ensuring that their task lists are always up to date and accessible from anywhere, at any time, facilitating efficient collaboration and task tracking.
 
-site link : https://ronak-affinidi-work-manager.vercel.app/
+site link : [https://ronak-affinidi-work-manager.vercel.app/](https://ronak-work-manager.vercel.app/)
 
 ## Images
 
